@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>2d шары</title>
+  <link href="2d.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body style="margin: 0px;">
+    <canvas id="canvas" width="600" height="300"></canvas>
+    <div id="info"> 
+        <div class="background"></div> 
+        <div class="content"> 
+                <h1>2D Шары</h1> 
+                <table> 
+                        <tr><td class="w">Мышь</td><td>→ подбрасывание</td></tr> 
+                </table> 
+                <hr> 
+                <p align="center">
+                    <input type="button" value="СБРОСИТЬ" id="reset"/>
+                    <input type="button" value="СТОП" id="stop-go"/>
+                </p> 
+        </div> 
+    </div>
+    <script>
+        //использовоание браузерного цикла анимации
+        window.requestAnimFrame = (function(){
+                return  window.requestAnimationFrame       || 
+                              window.webkitRequestAnimationFrame || 
+                              window.mozRequestAnimationFrame    || 
+                              window.oRequestAnimationFrame      || 
+                              window.msRequestAnimationFrame     || 
+                              function( callback ){
+                                window.setTimeout(callback, 1000 / 60);
+                              };
+        })();
+    </script>
+    <script src="2d.js"></script>
+</body>
+</html>

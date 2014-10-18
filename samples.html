@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 canvas: 2d и 3d</title>
+        <link href="samples.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2>Базовые фигуры</h2>
+    <br>
+    <canvas id="canvas1" width="600" height="150" style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas1"); // получаем элемент canvas
+        var ctx = canvas.getContext("2d"); // получаем 2d контекст canvas'а для возможности прорисовки
+        ctx.lineWidth = "3";
+        //пишем текст
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World",300,90);
+        //рисуем линию
+        ctx.strokeRect(35,35,60,60);
+        //рисуем оркужность
+        ctx.beginPath();
+        ctx.arc(150, 20, 15, 0, 2 * Math.PI);
+        ctx.stroke();
+        //рисуем линию
+        ctx.moveTo(150,80);
+        ctx.lineTo(300,100);
+        ctx.stroke();
+    </script>
+    <h2>Расположение фигур</h2>
+    <br>
+    <canvas id="canvas2" width="600" height="300" style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas2"); // получаем элемент canvas
+        var ctx = canvas.getContext("2d"); // получаем 2d контекст canvas'а для возможности прорисовки
+        ctx.lineWidth = "3";
+        //рисуем линию
+        ctx.moveTo(300,20);
+        ctx.lineTo(380,120);
+        ctx.moveTo(300,20);
+        ctx.lineTo(220,120);
+        ctx.stroke();
+        
+        ctx.strokeRect(220,120,160,150);
+        //рисуем оркужность
+        ctx.beginPath();
+        ctx.arc(300, 170, 25, 0, 2 * Math.PI);
+        ctx.stroke();
+        //пишем текст
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World",30,60);
+    </script>
+    <h2>Окраска фигур</h2>
+    <br>
+    <canvas id="canvas3" width="600" height="300" style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas3"); // получаем элемент canvas
+        var ctx = canvas.getContext("2d"); // получаем 2d контекст canvas'а для возможности прорисовки
+        ctx.lineWidth = "3";
+        
+        ctx.fillStyle = "yellow";
+        ctx.strokeStyle = "green";
+        //рисуем линию
+        ctx.moveTo(300,20);
+        ctx.lineTo(380,120);
+        ctx.lineTo(220,120);
+        ctx.lineTo(300,20);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+        
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "rgba(215, 44, 44, 0.5)";
+        ctx.fillRect(220,120,160,150);
+        ctx.strokeRect(220,120,160,150);
+        //рисуем оркужность
+        ctx.beginPath();
+        ctx.arc(300, 170, 25, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+        //пишем текст
+        ctx.fillStyle = "blue";
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World",30,60);
+    </script>
+    <h2>Обработка действий</h2>
+    <br>
+    <canvas id="canvas4" width="600" height="100" style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas4"); // получаем элемент canvas
+        var ctx = canvas.getContext("2d"); // получаем 2d контекст canvas'а для возможности прорисовки
+        //пишем текст
+        ctx.fillStyle = "red";
+        ctx.font = "30px Arial";
+        ctx.fillText("Нажми мышью.",20,60);
+        
+        canvas.addEventListener("mousedown", function(e){
+            var x = e.x;
+            var y = e.y;
+            alert("x: "+x+"; y: "+y+";");
+          });
+    </script>
+    <h2>Анимация</h2>
+    <br>
+    <canvas id="canvas5" width="600" height="200" style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
+    <script>
+        //использовоание браузерного цикла анимации
+        window.requestAnimFrame = (function(){
+                return  window.requestAnimationFrame       || 
+                              window.webkitRequestAnimationFrame || 
+                              window.mozRequestAnimationFrame    || 
+                              window.oRequestAnimationFrame      || 
+                              window.msRequestAnimationFrame     || 
+                              function( callback ){
+                                window.setTimeout(callback, 1000 / 60);
+                              };
+        })();
+    
+        var canvas = document.getElementById("canvas5"); // получаем элемент canvas
+        var ctx = canvas.getContext("2d"); // получаем 2d контекст canvas'а для возможности прорисовки
+        var r = 25;
+        var x=r,y=100;
+        var i = 1;
+        // ---- Инициализация функций ----- //
+        function execFrame(){
+            requestAnimFrame(execFrame);
+            
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            
+            x=x+i;
+            if(x==canvas.width-r) i=-1;
+            if(x==0+r) i=1;
+            //рисуем оркужность
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, 2 * Math.PI);
+            ctx.fillStyle = "blue";
+            ctx.fill();
+            ctx.stroke();
+        }
+        execFrame();
+    </script>
+    <h2><a href="canvas-2d/2d.html">Перейти к примеру: 2D Шары</a></h2>
+    <h2><a href="canvas-3d/3d.html">Перейти к примеру: 3D Куб</a></h2>
+    <br>
+    <br>
+</body>
+</html>

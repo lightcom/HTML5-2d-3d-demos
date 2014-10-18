@@ -1,0 +1,52 @@
+html { 
+    overflow: hidden; 
+} 
+body { 
+        position: absolute; 
+        margin: 0px; 
+        padding: 0px; 
+        background: #000; 
+        width: 100%; 
+        height: 100%; 
+} 
+#canvas { 
+    position: absolute; 
+    top: 19%;
+    left: 182px;
+}
+#info { 
+position: absolute; 
+text-align: left; 
+top: 19%; 
+left: 2px; 
+width: 180px; 
+height: 340px; 
+color: #666; 
+font-size: 1em; 
+} 
+#info .background { 
+        position: absolute; 
+        width: 100%; 
+        height: 100%; 
+        background: #000; 
+        opacity: 0.3; 
+} 
+#info .content { 
+        position: absolute; 
+        padding: 3px; 
+        width: 100%; 
+        height: 100%; 
+} 
+#info .w { 
+        color: #fff; 
+} 
+#info hr { 
+        width: 90%; 
+        border: none; 
+        background-color: #666; 
+        height: 1px; 
+} 
+#info h1 { 
+        color: #fff; 
+        text-align: center; 
+} 
